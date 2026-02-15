@@ -1,17 +1,30 @@
-let bibleQuiz = [];
+let allQuestions = []; // Store everything from JSON
+let bibleQuiz = []; // This will be our "filtered" list
 
 async function loadQuestions() {
   try {
     const response = await fetch("questions.json");
-
-    bibleQuiz = await response.json();
-
+    allQuestions = await response.json();
+    bibleQuiz = allQuestions; // Start with all questions
     displayQuestion();
   } catch (error) {
     console.error("سوالات لوڈ کرنے میں غلطی ہوئی:", error);
   }
 }
 
+// Category selection logic
+document.getElementById("difficulty").addEventListener("change", (e) => {
+  const level = e.target.value;
+  if (level === "All") {
+    bibleQuiz = allQuestions;
+  } else {
+    bibleQuiz = allQuestions.filter((q) => q.category === level);
+  }
+  contextIdx = 0; // Restart from first question of new category
+  scoresNo = 0; // Reset scores
+  document.querySelector(".final-scores").textContent = "";
+  displayQuestion();
+});
 loadQuestions();
 let contextIdx = 0;
 
