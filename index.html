@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400..700&display=swap"
       rel="stylesheet"
@@ -30,8 +31,11 @@
       <button value="Hard">مشکل (Hard)</button>
     </div>
 
+    <div id="progress-wrapper" class="progress-wrapper">
+      <div id="progress-bar" class="progress-bar"></div>
+    </div>
+
     <div class="main-body">
-      <p id="progress" class="progress"></p>
       <h2 class="question"></h2>
       <div class="option-container"></div>
     </div>

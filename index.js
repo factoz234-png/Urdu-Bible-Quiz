@@ -13,6 +13,7 @@ async function loadQuestions() {
 }
 
 document.querySelector(".main-body").style.display = "none";
+document.getElementById("progress-bar").style.display = "none";
 
 // Category selection logic
 document.querySelectorAll(".difficulty button").forEach((button) => {
@@ -26,6 +27,7 @@ document.querySelectorAll(".difficulty button").forEach((button) => {
 
     document.querySelector(".difficulty").style.display = "none"; // Hide category selection
     document.querySelector(".main-body").style.display = "flex"; // Show quiz area
+    document.getElementById("progress-bar").style.display = "flex"; // Show progress bar
 
     contextIdx = 0; // Restart from first question of new category
     scoresNo = 0; // Reset scores
@@ -39,8 +41,8 @@ let contextIdx = 0;
 function displayQuestion() {
   let questionData = bibleQuiz[contextIdx];
 
-  document.getElementById("progress").textContent =
-    `سوال ${contextIdx + 1} از ${bibleQuiz.length}`;
+  let progressPercent = ((contextIdx + 1) / bibleQuiz.length) * 100;
+  document.getElementById("progress-bar").style.width = progressPercent + "%";
 
   let quiz = document.querySelector(".question");
   quiz.textContent = questionData.question;
@@ -64,16 +66,21 @@ function checkAnswer(selectedIndex) {
   let questionData = bibleQuiz[contextIdx];
   let buttons = document.querySelectorAll(".option-btn");
   let scores = document.querySelector(".final-scores");
+  const correctSound = new Audio("sounds/correct.wav");
+  const wrongSound = new Audio("sounds/wrong.mp3");
 
   if (selectedIndex === questionData.answer) {
     buttons[selectedIndex].style.backgroundColor = "#2ecc71";
     buttons[selectedIndex].style.color = "white";
+    correctSound.play();
     scoresNo++;
 
     scores.textContent = `Scores: ${scoresNo} out of  ${contextIdx + 1} `;
   } else {
     buttons[selectedIndex].style.backgroundColor = "#e74c3c";
     buttons[selectedIndex].style.color = "white";
+
+    wrongSound.play();
 
     buttons[questionData.answer].style.backgroundColor = "#2ecc71";
     buttons[questionData.answer].style.color = "white";
@@ -98,13 +105,20 @@ function showFinalResult() {
   let mainBody = document.querySelector(".main-body");
   let passorfail = document.querySelector(".passOrFail");
 
+  // Save High Score
+  const currentHighScore = localStorage.getItem("bibleQuizHighScore") || 0;
+  if (scoresNo > currentHighScore) {
+    localStorage.setItem("bibleQuizHighScore", scoresNo);
+  }
+
   mainBody.innerHTML = `
-    <div class="mainBody" style="text-align: center; padding: 50px;">
-      <h1>کوئز مکمل ہو گیا!</h1>
-      <p>آپ نے تمام سوالات کے جوابات دے دیئے ہیں۔</p>
-      <button onclick="location.reload()" class="option-btn" style="text-align:center;">دوبارہ شروع کریں</button>
-    </div>
-  `;
+        <div class="mainBody" style="text-align: center; padding: 30px;">
+            <h1>کوئز مکمل!</h1>
+            <p>آپ کا سکور: ${scoresNo}</p>
+            <p>بہترین سکور (High Score): ${localStorage.getItem("bibleQuizHighScore")}</p>
+            <button onclick="location.reload()" class="option-btn">دوبارہ کھیلیں</button>
+        </div>
+    `;
 
   if (scoresNo < contextIdx / 2) {
     passorfail.textContent = `آپ ناکام  ہوگیے ہیں ، دوبارہ کوشش کریں`;
@@ -112,5 +126,10 @@ function showFinalResult() {
   } else {
     passorfail.textContent = `شاباش ! اپ نے اچھا کیا `;
     passorfail.style.color = "green";
+    confetti({
+      particleCount: 150,
+      spread: 70,
+      origin: { y: 0.6 },
+    });
   }
 }
