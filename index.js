@@ -79,7 +79,6 @@ function checkAnswer(selectedIndex) {
   } else {
     buttons[selectedIndex].style.backgroundColor = "#e74c3c";
     buttons[selectedIndex].style.color = "white";
-
     wrongSound.play();
 
     buttons[questionData.answer].style.backgroundColor = "#2ecc71";
@@ -101,9 +100,11 @@ function checkAnswer(selectedIndex) {
   }, 1500);
 }
 
+let passorfail = document.querySelector(".passOrFail");
+passorfail.style.display = "none";
+
 function showFinalResult() {
   let mainBody = document.querySelector(".main-body");
-  let passorfail = document.querySelector(".passOrFail");
 
   // Save High Score
   const currentHighScore = localStorage.getItem("bibleQuizHighScore") || 0;
@@ -112,20 +113,20 @@ function showFinalResult() {
   }
 
   mainBody.innerHTML = `
-        <div class="mainBody" style="text-align: center; padding: 30px;">
+        <div class="mainBody" style="display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: #0c2c55; padding: 10px; border-radius: 30px; color: white;">
             <h1>کوئز مکمل!</h1>
             <p>آپ کا سکور: ${scoresNo}</p>
-            <p>بہترین سکور (High Score): ${localStorage.getItem("bibleQuizHighScore")}</p>
+            <p>بہترین سکور: ${localStorage.getItem("bibleQuizHighScore")}</p>
             <button onclick="location.reload()" class="option-btn">دوبارہ کھیلیں</button>
         </div>
     `;
 
   if (scoresNo < contextIdx / 2) {
     passorfail.textContent = `آپ ناکام  ہوگیے ہیں ، دوبارہ کوشش کریں`;
-    passorfail.style.color = "red";
+    passorfail.style.color = "darkred";
   } else {
     passorfail.textContent = `شاباش ! اپ نے اچھا کیا `;
-    passorfail.style.color = "green";
+    passorfail.style.color = "darkgreen";
     confetti({
       particleCount: 150,
       spread: 70,
