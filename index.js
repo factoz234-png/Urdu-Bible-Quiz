@@ -12,18 +12,26 @@ async function loadQuestions() {
   }
 }
 
+document.querySelector(".main-body").style.display = "none";
+
 // Category selection logic
-document.getElementById("difficulty").addEventListener("change", (e) => {
-  const level = e.target.value;
-  if (level === "All") {
-    bibleQuiz = allQuestions;
-  } else {
-    bibleQuiz = allQuestions.filter((q) => q.category === level);
-  }
-  contextIdx = 0; // Restart from first question of new category
-  scoresNo = 0; // Reset scores
-  document.querySelector(".final-scores").textContent = "";
-  displayQuestion();
+document.querySelectorAll(".difficulty button").forEach((button) => {
+  button.addEventListener("click", (e) => {
+    const level = e.target.value;
+    if (level === "All") {
+      bibleQuiz = allQuestions;
+    } else {
+      bibleQuiz = allQuestions.filter((q) => q.category === level);
+    }
+
+    document.querySelector(".difficulty").style.display = "none"; // Hide category selection
+    document.querySelector(".main-body").style.display = "flex"; // Show quiz area
+
+    contextIdx = 0; // Restart from first question of new category
+    scoresNo = 0; // Reset scores
+    document.querySelector(".final-scores").textContent = "";
+    displayQuestion();
+  });
 });
 loadQuestions();
 let contextIdx = 0;
