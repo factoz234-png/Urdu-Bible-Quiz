@@ -98,8 +98,11 @@ nav {
   .question {
     text-align: center;
     padding: 10px;
-    background-color: #005461;
+    background-color: #0c2c55;
     border: 5px solid #bdc3c7;
+    border-top: none;
+    border-left: none;
+    border-right: none;
   }
 }
 
@@ -212,6 +215,9 @@ nav {
     .right {
       font-size: 34px;
       font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .left {
@@ -224,10 +230,11 @@ nav {
     flex-direction: column;
     justify-content: center;
     padding: 10px;
+    width: 243px;
   }
   .difficulty button {
     background-color: lightgrey;
-    width: 300px;
+    width: 250px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -251,6 +258,7 @@ nav {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    margin: 0 auto;
     margin-top: 10px;
     background-color: #0c2c55;
     color: white;
@@ -306,7 +314,7 @@ nav {
     font-size: 25px;
     margin: 10px auto;
     background-color: #0c2c55;
-    width: 300px;
+    max-width: 243px;
     border: 5px solid #bdc3c7;
     text-align: center;
   }
