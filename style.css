@@ -50,36 +50,51 @@ nav {
   border-radius: 10px;
   transition: width 0.4s ease-in-out; /* Makes the movement smooth */
 }
+
+.head {
+  font-size: 40px;
+  color: hsl(0, 0%, 100%);
+  margin-top: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
 .difficulty {
-  font-family: "Noto Nastaliq Urdu", serif !important;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  padding: 10px;
-  line-height: 2.5;
-  background-color: #0c2c55;
-  margin: 30px;
-  width: 400px;
   margin: 0 auto;
-  margin-top: 30px;
-  border: 10px solid #bdc3c7;
-}
-.difficulty h1 {
-  color: #ffffff;
-  font-size: 30px;
-  margin-bottom: 20px;
+  padding: 10px;
+  max-width: fit-content;
+  min-width: 90%;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 5px 4px 6px black;
+  background-color: #0c2c55;
+  margin-top: 20px;
+  margin-bottom: none;
 }
 .difficulty button {
-  font-family: "Noto Nastaliq Urdu", serif !important;
-  background-color: lightgrey;
-  width: 300px;
-  color: black;
+  font-family:
+    noto nastaliq urdu,
+    serif;
+  line-height: 2.5;
+  max-width: 400px;
+  width: 400px;
+  color: white;
+  background-color: hsl(257, 89%, 18%);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  margin-bottom: 20px;
+
   font-size: 1.5rem;
   text-align: center;
-  border-radius: 30px;
-  margin: 10px 10px;
-  height: 60px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+
   cursor: pointer;
   transition: all 0.3s ease;
 
@@ -98,11 +113,6 @@ nav {
   .question {
     text-align: center;
     padding: 10px;
-    background-color: #0c2c55;
-    border: 5px solid #bdc3c7;
-    border-top: none;
-    border-left: none;
-    border-right: none;
   }
 }
 
@@ -115,7 +125,7 @@ nav {
   width: 250px;
   height: 50px;
   margin-bottom: 5px;
-  background-color: #ffffff;
+  background-color: hsl(257, 89%, 18%);
   color: #2c3e50;
   border: 2px solid #bdc3c7;
   border-radius: 130px;
@@ -139,9 +149,10 @@ nav {
   font-family: "Noto Nastaliq Urdu", serif;
   font-size: 1.1rem;
   padding: 2px;
-  background-color: white;
-  border: 2px solid #555;
-  border-radius: 30px;
+  background-color: hsl(257, 89%, 18%);
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  color: white;
   cursor: pointer;
   transition: all 0.2s;
   text-align: right;
@@ -156,13 +167,17 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 1.2rem;
   color: #ffffff;
-  font-size: 25px;
-  margin: 10px auto;
   background-color: #0c2c55;
-  width: 300px;
-  border: 5px solid #bdc3c7;
+  max-width: 200px;
+  border-radius: 10px;
+  box-shadow: 5px 4px 6px black;
   text-align: center;
+  padding: 0px 5px 10px 5px;
 }
 
 .passOrFail {
@@ -210,7 +225,10 @@ nav {
     background-color: #0c2c55;
     color: #ededce;
     padding: 2px;
-    border-radius: 30px;
+    margin: 0;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 5px 5px 6px black;
 
     .right {
       font-size: 34px;
@@ -224,33 +242,51 @@ nav {
       display: none;
     }
   }
+
+  .head {
+    font-size: 30px;
+    color: #ffffff;
+    margin: 0;
+  }
   .difficulty {
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
     padding: 10px;
-    width: 243px;
+    max-width: fit-content;
+    min-width: 90%;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 5px 4px 6px black;
+    background-color: #0c2c55;
+    margin-top: 20px;
+    margin-bottom: none;
   }
   .difficulty button {
-    background-color: lightgrey;
-    width: 250px;
+    font-family:
+      Noto Nastaliq Urdu,
+      serif;
+    line-height: 2.5;
+    max-width: 400px;
+    width: 230px;
+    color: white;
+    background-color: hsl(257, 89%, 18%);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 60px;
-    color: black;
-    font-size: 1.5rem;
+    margin-top: 10px;
+
+    font-size: 1.2rem;
     text-align: center;
-    border-radius: 30px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 
     cursor: pointer;
     transition: all 0.3s ease;
-
-    &:hover {
-      background-color: #bdc3c7;
-      color: #2c3e50;
-    }
   }
 
   .main-body {
@@ -273,14 +309,40 @@ nav {
 
   .question {
     text-align: center;
+    font-size: large;
+    border: 5px solid #bdc3c7;
+    border-top: none;
+    border-left: none;
+    border-right: none;
   }
 
   .mainBody {
     background-color: #005461;
     margin-top: 5px;
-    border-radius: 30px;
+    border-radius: 10px;
     color: white;
     margin: 0 auto;
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 10px;
+    }
+
+    button {
+      font-family: "Noto Nastaliq Urdu", serif;
+      font-size: 1.1rem;
+      padding: 2px;
+      background-color: hsl(257, 89%, 18%);
+      border-radius: 10px;
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+      color: white;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: right;
+    }
   }
 
   .options-container {
@@ -293,9 +355,9 @@ nav {
     font-family: "Noto Nastaliq Urdu", serif;
     font-size: 1.1rem;
     padding: 2px;
-    background-color: white;
     border: 2px solid #555;
-    border-radius: 30px;
+    border-radius: 10px;
+    margin-bottom: 10px;
     cursor: pointer;
     transition: all 0.2s;
     text-align: right;
@@ -310,12 +372,15 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #ffffff;
+    margin-top: 10px;
+    margin-right: auto;
+    margin-left: auto;
     font-size: 25px;
-    margin: 10px auto;
+    color: #ffffff;
     background-color: #0c2c55;
-    max-width: 243px;
-    border: 5px solid #bdc3c7;
+    max-width: 200px;
+    border-radius: 10px;
+    box-shadow: 5px 4px 6px black;
     text-align: center;
   }
 
@@ -335,10 +400,26 @@ nav {
     margin-top: 20px;
     padding: 10px;
     background-color: #0c2c55;
+    box-shadow: 5px 4px 6px black;
     color: #ededce;
     border-radius: 30px;
     width: 80%;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .nameatend {
+    position: relative;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    height: 40px;
+    background-color: #0c2c55;
+    color: #ededce;
+    font-size: 14px;
+    border: none;
   }
 }

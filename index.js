@@ -14,6 +14,8 @@ async function loadQuestions() {
 
 document.querySelector(".main-body").style.display = "none";
 document.getElementById("progress-bar").style.display = "none";
+document.querySelector(".final-scores").style.display = "none";
+document.querySelector(".progress-wrapper").style.display = "none";
 
 // Category selection logic
 document.querySelectorAll(".difficulty button").forEach((button) => {
@@ -27,7 +29,11 @@ document.querySelectorAll(".difficulty button").forEach((button) => {
 
     document.querySelector(".difficulty").style.display = "none"; // Hide category selection
     document.querySelector(".main-body").style.display = "flex"; // Show quiz area
-    document.getElementById("progress-bar").style.display = "flex"; // Show progress bar
+    document.getElementById("progress-bar").style.display = "flex";
+    document.querySelector(".final-scores").style.display = "flex";
+    document.querySelector(".progress-wrapper").style.display = "flex";
+
+    // Show progress bar
 
     contextIdx = 0; // Restart from first question of new category
     scoresNo = 0; // Reset scores
@@ -116,7 +122,7 @@ function showFinalResult() {
         <div class="mainBody" style="display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: #0c2c55; padding: 10px; border-radius: 30px; color: white;">
             <h1>کوئز مکمل!</h1>
             <p>آپ کا سکور: ${scoresNo}</p>
-            <p>بہترین سکور: ${localStorage.getItem("bibleQuizHighScore")}</p>
+            <p>Highest Score:  ${localStorage.getItem("bibleQuizHighScore")}</p>
             <button onclick="location.reload()" class="option-btn">دوبارہ کھیلیں</button>
         </div>
     `;
